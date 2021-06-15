@@ -25,9 +25,12 @@
       <li class="list-group-item">Battery Capacity {{i.batterycap}}</li>
       <li class="list-group-item">Price {{i.price}}</li>
     </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Add to Compare</a>
-    </div>
+    
+    <form method="post" action="/compare/" class="d-flex">
+      {% csrf_token %}
+    <input name="cmpr" id="cmpr" type="hidden" value="{{i.id}}">
+    <button class="btn btn-outline-success" type="submit">Add to Compare</button>
+  </form>
   </div>
 </div>
 {% endfor %}

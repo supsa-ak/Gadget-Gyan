@@ -19,3 +19,4 @@ $('.compare').click(function () {
     localStorage.setItem('compare', JSON.stringify(compare));
     document.getElementById('compare').innerHTML = Object.keys(compare).length;
 });
+

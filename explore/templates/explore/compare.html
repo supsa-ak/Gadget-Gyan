@@ -1,2 +1,37 @@
 {% extends 'explore/basic.html' %}
 {% block title %}Compare - Gadget Gyan{% endblock %}
+{% block js %}
+<script src="../../static/explore/compare.js"></script> {% endblock %}
+{% block comparecss %}
+<link rel="stylesheet" type="text/css" href="../../static/explore/compare.css"> {% endblock %}
+
+{% block product %}
+<div class="container"><br>
+  <h2>To Compare Search the Devices</h2>
+  <br>
+  <br>
+  <!---------------------------------------------error for loop---------------------------------->
+  <div class="container">
+    
+    {% for i in product %}
+    <!---------------------------Card 1--------------------------------------->
+    <div class="card" id={{i}} style="width: 18rem;">
+      <img src="/media/{{i.image}}" class="card-img-top" alt="{{i.product_name}}" />
+      <div class="card-body">
+        <h5 class="card-title">{{i.product_name}}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Display {{i.display}}</li>
+        <li class="list-group-item">Processor {{i.processor}}</li>
+        <li class="list-group-item">Frontcam {{i.frontcam}}</li>
+        <li class="list-group-item">Rearcam {{i.rearcam}}</li>
+        <li class="list-group-item">Battery Capacity {{i.batterycap}}</li>
+        <li class="list-group-item">Price {{i.price}}</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Add to Compare</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% endblock %}

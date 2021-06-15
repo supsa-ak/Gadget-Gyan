@@ -42,4 +42,11 @@ def prodView(request):
     return render(request, 'explore/product.html', params)
 
 def compare(request):
-    return render(request, 'explore/compare.html')
+    if request.method == 'POST':
+        cmp = request.POST['cmpr']
+        if cmp:
+            c = Product.objects.get(id=cmp)
+            params = c
+        else:
+            return HttpResponseRedirect('/compare/')
+        return render(request, 'explore/compare.html', params)
