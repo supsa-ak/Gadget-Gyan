@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Product(models.Model):
+    objects = models.Model
     device_id = models.AutoField
     product_name = models.CharField(max_length=50)
     display = models.CharField(max_length=50, default="")

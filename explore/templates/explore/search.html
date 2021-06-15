@@ -1,3 +1,34 @@
 {% extends 'explore/basic.html' %}
-
 {% block title %}Search- Gadget Gyan{% endblock %}
+{% load static %}
+{% block product %}
+<div class="container">
+   {% if messages %}
+    <ul class="messages">
+      {% for k in messages %}
+        <li style="color:red">{{ k }}</li>
+      {% endfor %}
+    </ul>
+      {% endif %}
+  {% for i in sr %}
+  <!---------------------------Card 1--------------------------------------->
+  <div class="card" id={{i}} style="width: 18rem;">
+    <img src="/media/{{i.image}}" class="card-img-top" alt="{{i.product_name}}" />
+    <div class="card-body">
+      <h5 class="card-title">{{i.product_name}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Display {{i.display}}</li>
+      <li class="list-group-item">Processor {{i.processor}}</li>
+      <li class="list-group-item">Frontcam {{i.frontcam}}</li>
+      <li class="list-group-item">Rearcam {{i.rearcam}}</li>
+      <li class="list-group-item">Battery Capacity {{i.batterycap}}</li>
+      <li class="list-group-item">Price {{i.price}}</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Add to Compare</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

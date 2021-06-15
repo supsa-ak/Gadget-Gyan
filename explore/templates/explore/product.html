@@ -1,9 +1,12 @@
 {% extends 'explore/basic.html' %}
+<script> src = "../../static/explore/compare.js"</script>
 {% block title %}Product - Gadget Gyan{% endblock %}
 {% load static %}
 {% block prodcss %}
 <link rel="stylesheet" type="text/css" href="../../static/explore/product.css">
+
 {% endblock %}
+
 {% block product %}
 <div class="container">
   {% for i in product %}
@@ -22,8 +25,7 @@
       <li class="list-group-item">Price {{i.price}}</li>
     </ul>
     <div class="card-body">
-      <a href="#" class="card-link">More info</a>
-      <a href="#" class="card-link">Another link</a>
+      <a href="#" class="card-link">Add to Compare</a>
     </div>
   </div>
 </div>

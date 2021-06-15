@@ -1,7 +1,13 @@
 from django.shortcuts import render
 from .models import Product
+from django.http import HttpResponse, HttpResponseRedirect
+from django.db.models import Q
+from django.contrib import auth, messages
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
+import json
+from django.views.decorators.csrf import csrf_exempt
 
-from django.http import HttpResponse
 # Create your views here.
 def index(request):
     return render(request, 'explore/index.html')
@@ -12,7 +18,20 @@ def about(request):
 def contact(request):
     return render(request, 'explore/contact.html')
 
+def searchMatch(query, item):
+    return False
+
 def search(request):
+    if request.method == 'POST':
+        srch = request.POST['srh']
+        if srch:
+            match = Product.objects.filter(Q(product_name__icontains=srch))
+            if match:
+                return render(request, 'explore/search.html', {'sr':match})
+            else:
+                messages.error(request, 'no result found')
+        else:
+            return HttpResponseRedirect('/search/')
     return render(request, 'explore/search.html')
 
 def prodView(request):
@@ -22,5 +41,5 @@ def prodView(request):
     params = {'range': range(1,n), 'product': products}
     return render(request, 'explore/product.html', params)
 
-def Compare(request):
-    return render(request, 'explore/search.html')
+def compare(request):
+    return render(request, 'explore/compare.html')
