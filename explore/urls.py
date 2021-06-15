@@ -8,6 +8,6 @@ urlpatterns = [
     path("about/", views.about, name="AboutUs"),
     path("contact/", views.contact, name="ContactUs"),
     path("search/", views.search, name="Search"),
-    path("productView/", views.prodView, name="ProdView"),
+    path("prodView/", views.prodView, name="ProdView"),
     path("compare/", views.Compare, name="Compare")
 ]
